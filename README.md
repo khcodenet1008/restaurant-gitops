@@ -5,6 +5,7 @@ Simple GitOps overlay repo for the 4-service restaurant system.
 ## What It Deploys
 
 - MySQL
+- phpMyAdmin
 - Kafka
 - `gateway-service`
 - `menu-service`
@@ -22,6 +23,18 @@ Simple GitOps overlay repo for the 4-service restaurant system.
 ```bash
 kubectl apply -k restaurant-gitops/overlays/dev
 ```
+
+phpMyAdmin access:
+
+```bash
+kubectl port-forward service/phpmyadmin -n restaurant-demo 8081:80
+```
+
+Open `http://localhost:8081` and sign in with:
+
+- server: `mysql`
+- username: `restaurant_app`
+- password: `change-me`
 
 Istio demo:
 
