@@ -7,6 +7,3 @@ resources:
   - services/menu-service
   - services/order-service
   - services/payment-service
-  - services/notification-service
-  - services/inventory-service
-  - services/kitchen-service

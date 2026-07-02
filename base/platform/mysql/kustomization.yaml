@@ -1,4 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../../../../restaurant-app/platform/base/mysql-statefulset.yaml
+  - service.yaml
+  - mysql-statefulset.yaml
+  - init-configmap.yaml
+  - init-job.yaml

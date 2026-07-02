@@ -1,19 +1,31 @@
 # Restaurant GitOps
 
-Desired-state boilerplate for the restaurant assignment.
+Simple GitOps overlay repo for the 4-service restaurant system.
 
-## Purpose
+## What It Deploys
 
-- keep deployment state separate from application source
-- assemble environment-specific overlays
-- update image tags without editing service code
+- MySQL
+- Kafka
+- `gateway-service`
+- `menu-service`
+- `order-service`
+- `payment-service`
 
-## Structure
+## Overlays
 
-- `base/`: shared desired state
-- `overlays/dev/`: developer environment overrides
-- `overlays/demo/`: instructor demo overrides
+- `overlays/dev`
+- `overlays/demo`
+- `overlays/istio-dev`
 
-## Rule
+## Quick Start
 
-Service owners prepare service-local manifests in `restaurant-app/platform/services/<service>/`. Integration then copies or syncs the approved versions into this GitOps repo for release control.
+```bash
+kubectl apply -k restaurant-gitops/overlays/dev
+```
+
+Istio demo:
+
+```bash
+istioctl install --set profile=demo -y
+kubectl apply -k restaurant-gitops/overlays/istio-dev
+```
